@@ -38,7 +38,9 @@ export default class AddEntry extends Component {
 
   slide = (metric, value) => {
     this.setState(() => {
-      [metric]: value,
+      return {
+        [metric]: value
+      }
     })
   }
 
