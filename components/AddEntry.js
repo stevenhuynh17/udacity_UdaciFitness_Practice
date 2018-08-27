@@ -6,6 +6,7 @@ import { Ionicons } from '@expo/vector-icons'
 import { connect } from 'react-redux'
 import { addEntry } from '../actions'
 import { purple, white } from '../utils/colors'
+import { NavigationActions } from 'react-navigation'
 
 import UdaciSteppers from './UdaciSteppers'
 import UdaciSlider from './UdaciSlider'
@@ -130,6 +131,8 @@ class AddEntry extends Component {
         eat: 0
       }
     })
+
+    this.toHome()
   }
 
   reset = () => {
@@ -137,6 +140,14 @@ class AddEntry extends Component {
 
     this.props.dispatch(addEntry({
       [key]:getDailyReminderValue()
+    }))
+
+    this.toHome()
+  }
+
+  toHome = () => {
+    this.props.navigation.dispatch(NavigationActions.back({
+      key: 'AddEntry'
     }))
   }
 
